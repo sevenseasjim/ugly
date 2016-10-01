@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+
+<h1 class="h1center">Bus visualization TDI</h1>
+
+
+<h2>
+<a href="{{ url_for('bus_count') }}"> <p style="text-align:center;"></p>Bus count plot</a>
+<a href="{{ url_for('bus_box') }}"> <p style="text-align:center;"></p>Live Bus count</a>
+<a href="{{ url_for('bus_static') }}"> <p style="text-align:center;"></p>Static Bus distribution map</a>
+<a href="{{ url_for('bus_live') }}"> <p style="text-align:center;"></p>Live Bus distribution map</a>
+</h2>
+
+{% endblock %}

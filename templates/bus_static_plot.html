@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %} - Live{% endblock %}
+
+{% block head %}
+
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+<h1>NYC bus distribution <a href="/bus_static">Replot</a></h1>
+<p><i>Don't forget to click on the map for a reward.</i></p>
+
+
+<div id="mapid" style="height: 600px; width:100%"></div>
+
+
+<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+<script src="{{ url_for('static', filename='js/leaflet-heat.js') }}"></script>
+<script>
+ var map = L.map('mapid').setView([40.7, -74], 10);
+ 
+ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+     maxZoom: 18,
+     id: 'jhchoi.027bii1l',
+     accessToken: 'pk.eyJ1IjoiamhjaG9pIiwiYSI6ImNpbnV6ZGVzZTEydTF0dG0zODFodTB4NW0ifQ.0LGTfWMcMQgS_UlKlOVIiw'
+ }).addTo(map);
+
+ // data passed from render_template (app.py)
+ data = {{data}}
+
+ addressPoints = data.map(function (p) { return [p[0], p[1]]; });
+
+ var heat = L.heatLayer(addressPoints, {radius : 10, blur : 20}).addTo(map);
+
+ var popup = L.popup();
+
+ function onMapClick(e) {
+     popup
+         .setLatLng(e.latlng)
+         .setContent("Here is" + e.latlng.toString())
+         .openOn(map);
+ }
+
+ map.on('click', onMapClick);
+</script>
+
+{% endblock %}    

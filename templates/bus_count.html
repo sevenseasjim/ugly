@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Bus Count</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+		<link rel=stylesheet type=text/css href='{{ url_for('static',filename='style.css')}}'>
+		<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+		
+
+
+		<!-- <script src="js/jquery-1.11.0.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/wow.min.js"></script> -->
+	</head>
+	<body>
+		<div>
+  		  <h1><font size="6">
+  		  	INPUT TIME INTERVAL FOR BUS COUNT PLOT</h1>
+		  <h2><font size="4" color = #FFA500>
+		  	Please specify the plotting time interval bwtween 2015/09/12 19:00 - 2015/09/20  19:00</h2>
+		  <form id='userinput' method='post' action='bus_count' class="form" style="width: 500px;">
+		  	<div class="form-group">
+		  		<label for="tstart">Starting Time:</label>
+		      	<input type='text' class="form-control" name="tstart" placeholder="(yyyy/mm/dd/hh e.g. 2015/09/12/19)"/>
+		  	</div>
+		  	<div class="form-group">
+		  		<label for="tend">Ending Time:</label>
+		      	<input type='text' class="form-control" name="tend" placeholder="(yyyy/mm/dd/hh e.g. 2015/09/12/19)"/>
+		  	</div>
+		  	<div class="form-group">
+		  		<button type="submit" class="btn btn-info">Submit</button>
+		  	</div>
+		  <h2> <a href="/">GET BACK!!</a></h2>
+		  </form>
+		</div>
+	</body>
+</html>
